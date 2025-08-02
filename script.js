@@ -51,31 +51,25 @@ equalsButton.addEventListener("click", function() {
     expression = expression.replace(/x/g, "*");
     expression = expression.replace(/÷/g, "/");
     const lastCharakter = expression.slice(-1);
-    if (lastCharakter === "+" || lastCharakter === "-" || lastCharakter === "*" || lastCharakter === "/") {
+    if (["+", "-", "*", "/"].includes(lastCharakter)) {
         return;
     }
     try {
         const result = eval(expression);
-        display.innerHTML = result;
+        updateDisplay(result);
     } catch (error) {
-        display.innerHTML = "Error";
+        display.innerText = "Error";
     }
 });
-function updateDisplay(result) {
-    if (isNaN(result) || result === Infinity || result === -Infinity) {
-        display.innerText = "Error";
-    } else {
-        display.innerText = result;
-    }
-}
 clearAllButton.addEventListener("click", function() {
     display.innerHTML = "";
 });
 deleteButton.addEventListener("click", function() {
-    if(display.innerHTML === "Infinity"){
-    display.innerHTML = "";
+    if (display.innerHTML === "Infinity" || display.innerHTML === "Error") {
+        display.innerHTML = "";
+    } else {
+        display.innerHTML = display.innerHTML.slice(0, -1);
     }
-    display.innerHTML = display.innerHTML.slice(0, -1);
 });
 decimalButton.addEventListener("click", function() {
     if (display.innerHTML === "") return;
