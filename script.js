@@ -61,6 +61,13 @@ equalsButton.addEventListener("click", function() {
         display.innerHTML = "Error";
     }
 });
+function updateDisplay(result) {
+    if (isNaN(result) || result === Infinity || result === -Infinity) {
+        display.innerText = "Error";
+    } else {
+        display.innerText = result;
+    }
+}
 clearAllButton.addEventListener("click", function() {
     display.innerHTML = "";
 });
