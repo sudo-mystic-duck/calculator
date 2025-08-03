@@ -60,6 +60,9 @@ equalsButton.addEventListener("click", function() {
     } catch (error) {
         display.innerText = "Error";
     }
+    if (display.innerHTML === "") {
+        display.innerHTML = "";
+    }
 });
 function updateDisplay(result) {
     if (isNaN(result) || result === Infinity || result === -Infinity) {
