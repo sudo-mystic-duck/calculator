@@ -47,6 +47,7 @@ divideButton.addEventListener("click", function() {
     }
 });
 equalsButton.addEventListener("click", function() {
+    if (display.innerHTML === "") return;
     let expression = display.innerHTML;
     expression = expression.replace(/x/g, "*");
     expression = expression.replace(/÷/g, "/");
@@ -59,9 +60,6 @@ equalsButton.addEventListener("click", function() {
         updateDisplay(result);
     } catch (error) {
         display.innerText = "Error";
-    }
-    if (display.innerHTML === "") {
-        display.innerHTML = "";
     }
 });
 function updateDisplay(result) {
